@@ -19,6 +19,8 @@ export const fonts = [
   { name: 'Lora', font: lora }
 ]
 
+
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
