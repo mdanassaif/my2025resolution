@@ -37,6 +37,11 @@ export function Step5({ cardStyle, setCardStyle, overlay, setOverlay, step, setS
     </motion.div>
   )
 
+  const handleOverlayChange = (selectedOverlay) => {
+    setOverlay(selectedOverlay);
+    console.log('Overlay selected:', selectedOverlay.name, selectedOverlay.value);
+  }
+
   return (
     <motion.div
       variants={containerVariants}
@@ -118,7 +123,7 @@ export function Step5({ cardStyle, setCardStyle, overlay, setOverlay, step, setS
                 variants={itemVariants}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                onClick={() => setOverlay(o)}
+                onClick={() => handleOverlayChange(o)}
                 onMouseEnter={() => setHoveredOption(o.name)}
                 onMouseLeave={() => setHoveredOption(null)}
                 className={`

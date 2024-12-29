@@ -61,20 +61,27 @@ export const shareOnTwitter = async (resolution, SITE_URL) => {
 }
 
 export const downloadCard = async (setIsDownloading) => {
-  setIsDownloading(true);
   try {
-    const image = await toPng(document.getElementById('resolution-card'));
-    const link = document.createElement('a');
-    link.download = `resolution-${Date.now()}.png`;
-    link.href = image;
-    link.click();
-    confetti({
-      particleCount: 300,
-      spread: 180,
-      origin: { y: 0.6 }
+    setIsDownloading(true);
+    const element = document.getElementById('resolution-card');
+    
+    const dataUrl = await toPng(element, {
+      quality: 1.0,
+      pixelRatio: 3,
+      skipAutoScale: true,
+      filter: (node) => {
+        // Ensure we capture all elements including the background
+        return true;
+      }
     });
+
+    const link = document.createElement('a');
+    link.download = 'my-2025-resolution.png';
+    link.href = dataUrl;
+    link.click();
   } catch (err) {
-    console.error(err);
+    console.error('Error downloading card:', err);
+  } finally {
+    setIsDownloading(false);
   }
-  setIsDownloading(false);
-}
+};

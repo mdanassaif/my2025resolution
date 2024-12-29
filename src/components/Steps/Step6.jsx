@@ -89,14 +89,34 @@ export function Step6({
       >
         <div
           id="resolution-card"
-          className={`w-full aspect-[3/4] relative overflow-hidden ${cardStyle.class} transform transition-transform duration-300 group-hover:scale-[1.02]`}
+          className={`
+            w-full aspect-[3/4] relative overflow-hidden
+            ${cardStyle.class}
+            transform transition-transform duration-300 group-hover:scale-[1.02]
+          `}
           style={{
             backgroundImage: `url(${bgImage})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          <div className={`absolute inset-0 ${overlay.class}`} />
+          {overlay.name === 'Blur' ? (
+            <div 
+              className="absolute inset-0"
+              style={{
+                backgroundImage: `url(${bgImage})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                filter: 'blur(8px)',
+                opacity: 0.8
+              }}
+            />
+          ) : (
+            <div 
+              className={`absolute inset-0 ${overlay.value}`}
+            />
+          )}
+          
           <div className={`relative h-full p-8 flex flex-col ${layout.class}`}>
             <motion.h2
               initial={{ y: -20, opacity: 0 }}
