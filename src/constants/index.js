@@ -1,6 +1,6 @@
 export const backgrounds = [
     'https://images.unsplash.com/photo-1579546929518-9e396f3cc809',
-    'https://images.unsplash.com/photo-1557682250-33bd709cbe85',
+    '/cool.png',
     'https://images.unsplash.com/photo-1590853362412-2bed993671da',
     'https://images.unsplash.com/photo-1516541196182-6bdb0516ed27',
     'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe'
