@@ -7,10 +7,10 @@ import { useState, useRef, useEffect } from 'react'
 
 export function Step4({ selectedFont, setSelectedFont, textColor, setTextColor, showColorPicker, setShowColorPicker, step, setStep }) {
   const [hoveredFont, setHoveredFont] = useState(null)
-  const [recentColors, setRecentColors] = useState(() => {
-    const saved = localStorage.getItem('recentColors')
-    return saved ? JSON.parse(saved) : ['#FFFFFF', '#000000']
-  })
+  const [recentColors, setRecentColors] = useState([
+    '#FFFFFF', 
+    '#000000'
+  ])
   const colorPickerRef = useRef(null)
   const [pickerType, setPickerType] = useState('wheel')
 
@@ -28,7 +28,6 @@ export function Step4({ selectedFont, setSelectedFont, textColor, setTextColor, 
   const addRecentColor = (color) => {
     const newRecentColors = [color, ...recentColors.filter(c => c !== color).slice(0, 4)]
     setRecentColors(newRecentColors)
-    localStorage.setItem('recentColors', JSON.stringify(newRecentColors))
   }
 
   const containerVariants = {
